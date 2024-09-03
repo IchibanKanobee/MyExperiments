@@ -1,0 +1,5 @@
+docker build -f Dockerfile2 -t second_image .
+docker build -t main_image .
+
+docker run --name second_container second_image
+docker run --link second_container --rm main_image

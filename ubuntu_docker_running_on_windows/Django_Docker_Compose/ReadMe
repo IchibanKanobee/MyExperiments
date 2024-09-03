@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=aMqs_y6dZw4&list=PLOLrQ9Pn6cazCfL7v4CdaykNoWMQymM_C&index=2
+
+Use "docker compose" instead of docker-compose
+
+If you see the error of not mounting because file is not shared with host, go to Docker Desktop->Preferences->Filesharing, and add the path to the preferences

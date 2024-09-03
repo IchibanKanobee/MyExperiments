@@ -1,0 +1,17 @@
+.home-container {
+  background-image: url("./background.jpg"); /* Path to your background image */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: white;
+}

@@ -1,0 +1,4 @@
+Use multiprocessing when every process is CPU intensive. Because Python has GIL constraint, it actually runs 1 thread at a time, so multithreading will not help with performance. Use multiproceeng to physically run on different processors in parallel.
+
+ProcessPoolExecutor
+map 
