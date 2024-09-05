@@ -26,3 +26,5 @@ venv/
 core/
 migrations/
 postgres_data/
+*.mp3
+*.mp4
