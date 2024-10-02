@@ -28,3 +28,12 @@ migrations/
 postgres_data/
 *.mp3
 *.mp4
+/node_modules
+*.log*
+.env.development.local
+.env.test.local
+.env.production.local
+build/
+coverage/
+*.jar
+*.jnl

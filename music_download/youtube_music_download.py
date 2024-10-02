@@ -28,11 +28,8 @@ def download_youtube_audio(youtube_url, output_path="downloads"):
     except Exception as e:
         print(f"Error: {e}")
 
-# Example usage
-#youtube_link = "https://www.youtube.com/watch?v=7X1zg5kQBH4&list=PLX5SDkl7TCjhrcMeP2gRC8LngLALA2aD2&index=2"  # Replace with your video URL
-#youtube_link = "https://www.youtube.com/watch?v=Wtm1aA4OPfc"  # Replace with your video URL
-youtube_link = "https://www.youtube.com/watch?v=h1PAQA1qQ8Q"
-youtube_link = "https://www.youtube.com/watch?v=pNCnuYoz2d0"
+
+youtube_link = "https://www.youtube.com/watch?v=gLDIcr9Hjes"
 
 
 download_youtube_audio(youtube_link)

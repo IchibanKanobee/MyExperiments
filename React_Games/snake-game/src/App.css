@@ -1,0 +1,57 @@
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(20, 20px);
+  gap: 2px;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  background-color: #eee;
+}
+
+.snake {
+  background-color: green;
+}
+
+.food {
+  background-color: red;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.controls button {
+  font-size: 20px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+.controls div {
+  display: flex;
+  justify-content: center;
+}
+
+h1,
+h2 {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
