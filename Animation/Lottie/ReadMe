@@ -1,2 +1,4 @@
 Start a web server:
 python3 -m http.server 8003
+
+Rename fish.json.lottie.animation to fish.json

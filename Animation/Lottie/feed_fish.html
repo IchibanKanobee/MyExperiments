@@ -74,11 +74,6 @@
           autoplay: true,
           path: "http://localhost:8003/fish.json", // Replace with the path to your Lottie JSON file
         });
-
-        // Apply scaling after animation loads (if needed)
-        fish.animation.addEventListener("DOMLoaded", () => {
-          fishContainer.style.transform = "scale(0.8)"; // Scale down slightly to prevent clipping
-        });
       }
 
       // Draw the food
