@@ -162,33 +162,21 @@ function drawSnake() {
           prevSegmentDir === directions.RIGHT &&
           currSegmentDir === directions.UP
         ) {
-          console.log(
-            "prevSegmentDir === directions.RIGHT && currSegmentDir === directions.UP"
-          );
           ctx.rotate((90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.UP &&
           currSegmentDir === directions.LEFT
         ) {
-          console.log(
-            "prevSegmentDir === directions.UP && currSegmentDir === directions.LEFT"
-          );
           ctx.rotate(0);
         } else if (
           prevSegmentDir === directions.LEFT &&
           currSegmentDir === directions.DOWN
         ) {
-          console.log(
-            "prevSegmentDir === directions.LEFT && currSegmentDir === directions.DOWN"
-          );
           ctx.rotate((-90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.DOWN &&
           currSegmentDir === directions.RIGHT
         ) {
-          console.log(
-            "prevSegmentDir === directions.DOWN && currSegmentDir === directions.RIGHT"
-          );
           ctx.rotate((180 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.RIGHT &&
@@ -218,10 +206,7 @@ function drawSnake() {
           prevSegmentDir === directions.UP &&
           currSegmentDir === directions.RIGHT
         ) {
-          console.log(
-            "prevSegmentDir === directions.UP && currSegmentDir === directions.RIGHT"
-          );
-          ctx.rotate(0);
+          ctx.rotate((-90 * Math.PI) / 180);
         }
 
         ctx.drawImage(img, -gridSize / 2, -gridSize / 2, gridSize, gridSize);
