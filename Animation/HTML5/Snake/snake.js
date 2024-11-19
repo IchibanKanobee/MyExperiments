@@ -102,42 +102,63 @@ function drawSnake() {
 
         // Rotate based on direction change
         if (prevSegmentDir === directions.RIGHT && tailDir === directions.UP) {
+          console.log(
+            "prevSegmentDir === directions.RIGHT && tailDir === directions.UP"
+          );
           ctx.rotate((90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.UP &&
           tailDir === directions.LEFT
         ) {
+          console.log(
+            "prevSegmentDir === directions.UP && tailDir === directions.LEFT"
+          );
           ctx.rotate((180 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.LEFT &&
           tailDir === directions.DOWN
         ) {
+          console.log(
+            "prevSegmentDir === directions.LEFT && tailDir === directions.DOWN"
+          );
           ctx.rotate((-90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.DOWN &&
           tailDir === directions.RIGHT
         ) {
+          console.log(
+            "prevSegmentDir === directions.DOWN && tailDir === directions.RIGHT"
+          );
           ctx.rotate(0);
         } else if (
           prevSegmentDir === directions.RIGHT &&
           tailDir === directions.DOWN
         ) {
+          console.log(
+            "prevSegmentDir === directions.RIGHT && tailDir === directions.DOWN"
+          );
           ctx.rotate((-90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.DOWN &&
           tailDir === directions.LEFT
         ) {
+          console.log(
+            "prevSegmentDir === directions.DOWN && tailDir === directions.LEFT"
+          );
           ctx.rotate((180 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.LEFT &&
           tailDir === directions.UP
         ) {
+          console.log(
+            "prevSegmentDir === directions.LEFT && tailDir === directions.UP"
+          );
           ctx.rotate((90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.UP &&
           tailDir === directions.RIGHT
         ) {
-          ctx.rotate(0);
+          ctx.rotate((-90 * Math.PI) / 180);
         }
 
         ctx.drawImage(img, -gridSize / 2, -gridSize / 2, gridSize, gridSize);
