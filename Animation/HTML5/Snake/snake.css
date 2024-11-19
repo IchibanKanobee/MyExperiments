@@ -1,0 +1,15 @@
+canvas {
+  display: block;
+  margin: auto;
+  background: #111;
+}
+
+#gameContainer {
+  text-align: center; /* Center content inside the container */
+  margin: 0 auto;
+  width: 400px; /* Same width as the canvas */
+}
+
+#pauseButton {
+  margin-top: 10px; /* Space between the canvas and button */
+}

@@ -6,11 +6,13 @@ const headImg = new Image();
 const tailImg = new Image();
 const bodyImg = new Image();
 const turnImg = new Image();
+const tailTurnImg = new Image();
 
 headImg.src = "head.png";
 tailImg.src = "tail.png";
 bodyImg.src = "body.png";
 turnImg.src = "turn.png";
+tailTurnImg.src = "tailTurn.png";
 
 // Game variables
 const gridSize = 20;
@@ -20,12 +22,12 @@ const directions = {
   UP: { x: 0, y: -1 },
   DOWN: { x: 0, y: 1 },
   LEFT: { x: -1, y: 0 },
-  RIGHT: { x: 1, y: 0 }
+  RIGHT: { x: 1, y: 0 },
 };
 let snake = [
   { x: 5, y: 5, dir: directions.RIGHT }, // Head
   { x: 4, y: 5, dir: directions.RIGHT }, // Body segment
-  { x: 3, y: 5, dir: directions.RIGHT }  // Tail
+  { x: 3, y: 5, dir: directions.RIGHT }, // Tail
 ];
 let food = { x: 15, y: 10 };
 let currentDirection = directions.RIGHT;
@@ -35,6 +37,27 @@ let gameOver = false;
 // Timer variables
 const gameSpeed = 500; // 500 ms per animation cycle
 let gameInterval;
+
+let isPaused = false; // Track pause state
+
+// Function to toggle pause state
+function togglePause() {
+  isPaused = !isPaused;
+
+  // Update button text
+  const pauseButton = document.getElementById("pauseButton");
+  pauseButton.textContent = isPaused ? "Resume" : "Pause";
+
+  // Stop the game loop if paused
+  if (isPaused) {
+    clearInterval(gameInterval);
+  } else {
+    gameInterval = setInterval(gameLoop, gameSpeed); // Resume game loop
+  }
+}
+
+// Attach event listener to the pause button
+document.getElementById("pauseButton").addEventListener("click", togglePause);
 
 // Keyboard controls
 window.addEventListener("keydown", (e) => {
@@ -79,19 +102,25 @@ function drawSnake() {
 
         // Rotate based on direction change
         if (prevDir === directions.RIGHT && tailDir === directions.UP) {
-          ctx.rotate(90 * Math.PI / 180);
+          ctx.rotate((90 * Math.PI) / 180);
         } else if (prevDir === directions.UP && tailDir === directions.LEFT) {
-          ctx.rotate(180 * Math.PI / 180);
+          ctx.rotate((180 * Math.PI) / 180);
         } else if (prevDir === directions.LEFT && tailDir === directions.DOWN) {
-          ctx.rotate(-90 * Math.PI / 180);
-        } else if (prevDir === directions.DOWN && tailDir === directions.RIGHT) {
+          ctx.rotate((-90 * Math.PI) / 180);
+        } else if (
+          prevDir === directions.DOWN &&
+          tailDir === directions.RIGHT
+        ) {
           ctx.rotate(0);
-        } else if (prevDir === directions.RIGHT && tailDir === directions.DOWN) {
-          ctx.rotate(-90 * Math.PI / 180);
+        } else if (
+          prevDir === directions.RIGHT &&
+          tailDir === directions.DOWN
+        ) {
+          ctx.rotate((-90 * Math.PI) / 180);
         } else if (prevDir === directions.DOWN && tailDir === directions.LEFT) {
-          ctx.rotate(180 * Math.PI / 180);
+          ctx.rotate((180 * Math.PI) / 180);
         } else if (prevDir === directions.LEFT && tailDir === directions.UP) {
-          ctx.rotate(90 * Math.PI / 180);
+          ctx.rotate((90 * Math.PI) / 180);
         } else if (prevDir === directions.UP && tailDir === directions.RIGHT) {
           ctx.rotate(0);
         }
@@ -115,20 +144,50 @@ function drawSnake() {
 
         // Rotate based on direction change
         if (prevDir === directions.RIGHT && currDir === directions.UP) {
-          ctx.rotate(90 * Math.PI / 180);
+          console.log(
+            "prevDir === directions.RIGHT && currDir === directions.UP"
+          );
+          ctx.rotate((90 * Math.PI) / 180);
         } else if (prevDir === directions.UP && currDir === directions.LEFT) {
-          ctx.rotate(180 * Math.PI / 180);
+          console.log(
+            "prevDir === directions.UP && currDir === directions.LEFT"
+          );
+          ctx.rotate((180 * Math.PI) / 180);
         } else if (prevDir === directions.LEFT && currDir === directions.DOWN) {
-          ctx.rotate(-90 * Math.PI / 180);
-        } else if (prevDir === directions.DOWN && currDir === directions.RIGHT) {
+          console.log(
+            "prevDir === directions.LEFT && currDir === directions.DOWN"
+          );
+          ctx.rotate((-90 * Math.PI) / 180);
+        } else if (
+          prevDir === directions.DOWN &&
+          currDir === directions.RIGHT
+        ) {
+          console.log(
+            "prevDir === directions.DOWN && currDir === directions.RIGHT"
+          );
           ctx.rotate(0);
-        } else if (prevDir === directions.RIGHT && currDir === directions.DOWN) {
-          ctx.rotate(-90 * Math.PI / 180);
+        } else if (
+          prevDir === directions.RIGHT &&
+          currDir === directions.DOWN
+        ) {
+          console.log(
+            "prevDir === directions.RIGHT && currDir === directions.DOWN"
+          );
+          ctx.rotate((-90 * Math.PI) / 180);
         } else if (prevDir === directions.DOWN && currDir === directions.LEFT) {
-          ctx.rotate(180 * Math.PI / 180);
+          console.log(
+            "prevDir === directions.DOWN && currDir === directions.LEFT"
+          );
+          ctx.rotate((180 * Math.PI) / 180);
         } else if (prevDir === directions.LEFT && currDir === directions.UP) {
-          ctx.rotate(90 * Math.PI / 180);
+          console.log(
+            "prevDir === directions.LEFT && currDir === directions.UP"
+          );
+          ctx.rotate((90 * Math.PI) / 180);
         } else if (prevDir === directions.UP && currDir === directions.RIGHT) {
+          console.log(
+            "prevDir === directions.UP && currDir === directions.RIGHT"
+          );
           ctx.rotate(0);
         }
 
@@ -145,11 +204,11 @@ function drawSnake() {
 
     if (segment.dir === directions.RIGHT) {
       ctx.translate(x + gridSize / 2, y + gridSize / 2);
-      ctx.rotate(90 * Math.PI / 180);
+      ctx.rotate((90 * Math.PI) / 180);
       ctx.drawImage(img, -gridSize / 2, -gridSize / 2, gridSize, gridSize);
     } else if (segment.dir === directions.LEFT) {
       ctx.translate(x + gridSize / 2, y + gridSize / 2);
-      ctx.rotate(-90 * Math.PI / 180);
+      ctx.rotate((-90 * Math.PI) / 180);
       ctx.drawImage(img, -gridSize / 2, -gridSize / 2, gridSize, gridSize);
     } else {
       ctx.drawImage(img, x, y, gridSize, gridSize); // No rotation for vertical movement
@@ -158,7 +217,6 @@ function drawSnake() {
     ctx.restore();
   }
 }
-
 
 function drawFood() {
   ctx.fillStyle = "red";
@@ -170,7 +228,7 @@ function moveSnake() {
   const newHead = {
     x: head.x + currentDirection.x,
     y: head.y + currentDirection.y,
-    dir: currentDirection
+    dir: currentDirection,
   };
 
   // Add new head
@@ -186,11 +244,11 @@ function moveSnake() {
 
   // Check for collisions
   if (
-    newHead.x < 0 || 
-    newHead.y < 0 || 
-    newHead.x >= canvasWidth / gridSize || 
-    newHead.y >= canvasHeight / gridSize || 
-    snake.slice(1).some(seg => seg.x === newHead.x && seg.y === newHead.y)
+    newHead.x < 0 ||
+    newHead.y < 0 ||
+    newHead.x >= canvasWidth / gridSize ||
+    newHead.y >= canvasHeight / gridSize ||
+    snake.slice(1).some((seg) => seg.x === newHead.x && seg.y === newHead.y)
   ) {
     clearInterval(gameInterval);
     gameOver = true;
@@ -203,12 +261,13 @@ function moveSnake() {
 function spawnFood() {
   food = {
     x: Math.floor(Math.random() * (canvasWidth / gridSize)),
-    y: Math.floor(Math.random() * (canvasHeight / gridSize))
+    y: Math.floor(Math.random() * (canvasHeight / gridSize)),
   };
 }
 
 function gameLoop() {
   if (gameOver) return;
+  if (isPaused) return;
 
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   moveSnake();
@@ -220,4 +279,3 @@ function gameLoop() {
 headImg.onload = () => {
   gameInterval = setInterval(gameLoop, gameSpeed);
 };
-
