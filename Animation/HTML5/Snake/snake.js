@@ -134,10 +134,7 @@ function drawSnake() {
           prevSegmentDir === directions.RIGHT &&
           tailDir === directions.DOWN
         ) {
-          console.log(
-            "prevSegmentDir === directions.RIGHT && tailDir === directions.DOWN"
-          );
-          ctx.rotate((-90 * Math.PI) / 180);
+          ctx.rotate(0);
         } else if (
           prevSegmentDir === directions.DOWN &&
           tailDir === directions.LEFT
