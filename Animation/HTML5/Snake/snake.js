@@ -107,17 +107,11 @@ function drawSnake() {
           prevSegmentDir === directions.UP &&
           tailDir === directions.LEFT
         ) {
-          console.log(
-            "prevSegmentDir === directions.UP && tailDir === directions.LEFT"
-          );
-          ctx.rotate((180 * Math.PI) / 180);
+          ctx.rotate(0);
         } else if (
           prevSegmentDir === directions.LEFT &&
           tailDir === directions.DOWN
         ) {
-          console.log(
-            "prevSegmentDir === directions.LEFT && tailDir === directions.DOWN"
-          );
           ctx.rotate((-90 * Math.PI) / 180);
         } else if (
           prevSegmentDir === directions.DOWN &&
