@@ -89,11 +89,11 @@ function drawSnake() {
       // Tail logic
       const tail = segment;
       const beforeTail = snake[i - 1];
-      const prevDir = beforeTail.dir;
+      const prevSegmentDir = beforeTail.dir;
       const tailDir = tail.dir;
 
       // Determine if the tail is turning
-      if (prevDir !== tailDir) {
+      if (prevSegmentDir !== tailDir) {
         img = tailTurnImg; // Use tail-turn image
         ctx.save();
         const x = tail.x * gridSize;
@@ -101,27 +101,42 @@ function drawSnake() {
         ctx.translate(x + gridSize / 2, y + gridSize / 2);
 
         // Rotate based on direction change
-        if (prevDir === directions.RIGHT && tailDir === directions.UP) {
+        if (prevSegmentDir === directions.RIGHT && tailDir === directions.UP) {
           ctx.rotate((90 * Math.PI) / 180);
-        } else if (prevDir === directions.UP && tailDir === directions.LEFT) {
+        } else if (
+          prevSegmentDir === directions.UP &&
+          tailDir === directions.LEFT
+        ) {
           ctx.rotate((180 * Math.PI) / 180);
-        } else if (prevDir === directions.LEFT && tailDir === directions.DOWN) {
+        } else if (
+          prevSegmentDir === directions.LEFT &&
+          tailDir === directions.DOWN
+        ) {
           ctx.rotate((-90 * Math.PI) / 180);
         } else if (
-          prevDir === directions.DOWN &&
+          prevSegmentDir === directions.DOWN &&
           tailDir === directions.RIGHT
         ) {
           ctx.rotate(0);
         } else if (
-          prevDir === directions.RIGHT &&
+          prevSegmentDir === directions.RIGHT &&
           tailDir === directions.DOWN
         ) {
           ctx.rotate((-90 * Math.PI) / 180);
-        } else if (prevDir === directions.DOWN && tailDir === directions.LEFT) {
+        } else if (
+          prevSegmentDir === directions.DOWN &&
+          tailDir === directions.LEFT
+        ) {
           ctx.rotate((180 * Math.PI) / 180);
-        } else if (prevDir === directions.LEFT && tailDir === directions.UP) {
+        } else if (
+          prevSegmentDir === directions.LEFT &&
+          tailDir === directions.UP
+        ) {
           ctx.rotate((90 * Math.PI) / 180);
-        } else if (prevDir === directions.UP && tailDir === directions.RIGHT) {
+        } else if (
+          prevSegmentDir === directions.UP &&
+          tailDir === directions.RIGHT
+        ) {
           ctx.rotate(0);
         }
 
@@ -132,10 +147,10 @@ function drawSnake() {
       img = tailImg; // Straight tail
     } else {
       // Handle turns for body segments
-      const prevDir = snake[i - 1].dir;
-      const currDir = segment.dir;
+      const prevSegmentDir = snake[i - 1].dir;
+      const currSegmentDir = segment.dir;
 
-      if (prevDir !== currDir) {
+      if (prevSegmentDir !== currSegmentDir) {
         img = turnImg; // Use turn image
         ctx.save();
         const x = segment.x * gridSize;
@@ -143,50 +158,68 @@ function drawSnake() {
         ctx.translate(x + gridSize / 2, y + gridSize / 2);
 
         // Rotate based on direction change
-        if (prevDir === directions.RIGHT && currDir === directions.UP) {
+        if (
+          prevSegmentDir === directions.RIGHT &&
+          currSegmentDir === directions.UP
+        ) {
           console.log(
-            "prevDir === directions.RIGHT && currDir === directions.UP"
+            "prevSegmentDir === directions.RIGHT && currSegmentDir === directions.UP"
           );
           ctx.rotate((90 * Math.PI) / 180);
-        } else if (prevDir === directions.UP && currDir === directions.LEFT) {
+        } else if (
+          prevSegmentDir === directions.UP &&
+          currSegmentDir === directions.LEFT
+        ) {
           console.log(
-            "prevDir === directions.UP && currDir === directions.LEFT"
+            "prevSegmentDir === directions.UP && currSegmentDir === directions.LEFT"
           );
           ctx.rotate((180 * Math.PI) / 180);
-        } else if (prevDir === directions.LEFT && currDir === directions.DOWN) {
+        } else if (
+          prevSegmentDir === directions.LEFT &&
+          currSegmentDir === directions.DOWN
+        ) {
           console.log(
-            "prevDir === directions.LEFT && currDir === directions.DOWN"
+            "prevSegmentDir === directions.LEFT && currSegmentDir === directions.DOWN"
           );
           ctx.rotate((-90 * Math.PI) / 180);
         } else if (
-          prevDir === directions.DOWN &&
-          currDir === directions.RIGHT
+          prevSegmentDir === directions.DOWN &&
+          currSegmentDir === directions.RIGHT
         ) {
           console.log(
-            "prevDir === directions.DOWN && currDir === directions.RIGHT"
-          );
-          ctx.rotate(0);
-        } else if (
-          prevDir === directions.RIGHT &&
-          currDir === directions.DOWN
-        ) {
-          console.log(
-            "prevDir === directions.RIGHT && currDir === directions.DOWN"
-          );
-          ctx.rotate((-90 * Math.PI) / 180);
-        } else if (prevDir === directions.DOWN && currDir === directions.LEFT) {
-          console.log(
-            "prevDir === directions.DOWN && currDir === directions.LEFT"
+            "prevSegmentDir === directions.DOWN && currSegmentDir === directions.RIGHT"
           );
           ctx.rotate((180 * Math.PI) / 180);
-        } else if (prevDir === directions.LEFT && currDir === directions.UP) {
+        } else if (
+          prevSegmentDir === directions.RIGHT &&
+          currSegmentDir === directions.DOWN
+        ) {
           console.log(
-            "prevDir === directions.LEFT && currDir === directions.UP"
+            "prevSegmentDir === directions.RIGHT && currSegmentDir === directions.DOWN"
+          );
+          ctx.rotate((-90 * Math.PI) / 180);
+        } else if (
+          prevSegmentDir === directions.DOWN &&
+          currSegmentDir === directions.LEFT
+        ) {
+          console.log(
+            "prevSegmentDir === directions.DOWN && currSegmentDir === directions.LEFT"
+          );
+          ctx.rotate((180 * Math.PI) / 180);
+        } else if (
+          prevSegmentDir === directions.LEFT &&
+          currSegmentDir === directions.UP
+        ) {
+          console.log(
+            "prevSegmentDir === directions.LEFT && currSegmentDir === directions.UP"
           );
           ctx.rotate((90 * Math.PI) / 180);
-        } else if (prevDir === directions.UP && currDir === directions.RIGHT) {
+        } else if (
+          prevSegmentDir === directions.UP &&
+          currSegmentDir === directions.RIGHT
+        ) {
           console.log(
-            "prevDir === directions.UP && currDir === directions.RIGHT"
+            "prevSegmentDir === directions.UP && currSegmentDir === directions.RIGHT"
           );
           ctx.rotate(0);
         }
