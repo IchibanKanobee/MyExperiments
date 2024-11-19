@@ -1,0 +1,40 @@
+services:
+  djangoreactproj:
+    build:
+      context: ./djangoreactproj
+    volumes:
+      - ./djangoreactproj:/djangoreactproj
+      - media_volume:/djangoreactproj/media # Add this line to mount the media volume
+    ports:
+      - "8000:8000"
+    container_name: django_container
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./reactknow
+    volumes:
+      - ./reactknow:/reactknow
+    ports:
+      - "3000:3000"
+    container_name: react_container
+    depends_on:
+      - djangoreactproj
+
+  db:
+    image: postgres
+    volumes:
+      - ./djangoreactproj/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: Questionnaire
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bee561333
+    container_name: postgres_container
+    restart: always
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+  media_volume:

@@ -1,0 +1,12 @@
+The "rest_server.py" file is a Python-based Flask REST API server that offers two endpoint options for users:
+
+The first endpoint, located at http://127.0.0.1:5000/hosts/<host_ip>/ten-riskiest-vulnerabilities, returns the 10 most critical vulnerabilities for a specific host.
+The second endpoint, located at http://127.0.0.1:5000/hosts/<host_ip>/sorted-vulnerabilities/, returns all vulnerabilities for a specific host in alphabetical order.
+
+Additionally, this endpoint supports pagination through the use of "page" and "limit" parameters in the API call, such as http://127.0.0.1:5000/hosts/<host_ip>/sorted-vulnerabilities/?page=2&limit=5
+
+The <host_ip> value can be obtained from the "Source" column from the "vulnerabilities(fixed).csv" file.
+
+The "test_rest_server.py" file provides a set of tests for the API using the "pytest" framework and can be executed by running the command "pytest" in the same directory.
+
+This project also requires the installation of Flask, Pandas and Pytest packages in a virtual environment. The "requirements.txt" file is included to assist with installation of these packages.

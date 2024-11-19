@@ -1,0 +1,7 @@
+A Memory Match Game is a classic choice. The goal of the game is to match pairs of cards by remembering their positions. This type of game is easy to understand and fun for players of all ages.
+
+Game Features:
+Cards with Hidden Images/Numbers: Cards will be face-down at the start. When clicked, they will flip and reveal an image or number.
+Match Pairs: The player has to match pairs of identical cards. If the cards don’t match, they flip back.
+Score and Moves Tracking: Track the number of moves made and the player's score (number of matched pairs).
+Reset Option: Once all pairs are matched, offer a restart option.

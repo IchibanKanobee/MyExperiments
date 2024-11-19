@@ -1,0 +1,7 @@
+FROM python:3.9
+WORKDIR /app
+COPY requirements2.txt /app
+RUN pip install -r requirements2.txt
+COPY second.py /app
+CMD ["python", "second.py"]
+

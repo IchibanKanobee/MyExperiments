@@ -1,0 +1,5 @@
+LIBS = -lopenvdb
+
+SRC=$(wildcard *.cpp)
+test: $(SRC)
+	gcc -o $@ $^ $(CFLAGC) $(LIBS)

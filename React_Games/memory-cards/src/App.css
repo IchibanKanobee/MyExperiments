@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fruit-symbol {
+  font-size: 48px;
+}
+
+.question-mark {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.flipped {
+  background-color: white;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+label,
+select {
+  font-size: 18px;
+  margin: 10px;
+}

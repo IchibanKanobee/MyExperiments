@@ -1,0 +1,4 @@
+Use multithreading when every thread deals with a long I/O operation. Because Python has GIL constraint, it actually runs 1 thread at a time, so multithreading will not help with performance when each thread is CPU intensive. Use multiproceeng to physically run on different processors in parallel and multithreading when each thread takes a long I/O operation.
+
+ThreadPoolExecutor
+map 

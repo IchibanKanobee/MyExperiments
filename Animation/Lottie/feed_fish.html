@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed the Fish Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #87ceeb; /* Ocean blue */
+      }
+      canvas {
+        border: 2px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Resize canvas to full screen
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // Fish object (uses Lottie animation)
+      const fish = {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        size: 100, // Size for reference
+        speed: 2,
+        animation: null,
+        container: null, // Container for the Lottie animation
+        rotation: 0,
+      };
+
+      // Food object
+      const food = {
+        x: null,
+        y: null,
+        size: 10,
+      };
+
+      let foodDropped = false;
+
+      // Load the fish Lottie animation
+      function loadFishAnimation() {
+        // Create a container for the Lottie animation
+        const fishContainer = document.createElement("div");
+        fishContainer.style.position = "absolute";
+        fishContainer.style.width = `${fish.size}px`; // Set width equal to fish.size
+        fishContainer.style.height = `${fish.size}px`;
+        fishContainer.style.left = `${fish.x - fish.size / 2}px`;
+        fishContainer.style.top = `${fish.y - fish.size / 2}px`;
+        fishContainer.style.overflow = "visible"; // Ensure overflow is visible
+        fishContainer.style.transformOrigin = "center"; // Ensure scaling happens from the center
+        document.body.appendChild(fishContainer);
+
+        // Assign the container to the fish object
+        fish.container = fishContainer;
+
+        // Load the Lottie animation
+        fish.animation = lottie.loadAnimation({
+          container: fishContainer,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: "http://localhost:8003/fish.json", // Replace with the path to your Lottie JSON file
+        });
+
+        // Apply scaling after animation loads (if needed)
+        fish.animation.addEventListener("DOMLoaded", () => {
+          fishContainer.style.transform = "scale(0.8)"; // Scale down slightly to prevent clipping
+        });
+      }
+
+      // Draw the food
+      function drawFood() {
+        if (foodDropped) {
+          ctx.beginPath();
+          ctx.arc(food.x, food.y, food.size, 0, Math.PI * 2);
+          ctx.fillStyle = "#FFD700"; // Golden color for food
+          ctx.fill();
+          ctx.closePath();
+        }
+      }
+
+      // Move the fish towards the food
+      function moveFish() {
+        if (foodDropped) {
+          const dx = food.x - fish.x;
+          const dy = food.y - fish.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance > 5) {
+            // Calculate the movement
+            const angle = Math.atan2(dy, dx);
+
+            // Update the fish's direction based on the x-coordinate of the food
+            fish.rotation = dx < 0 ? 0 : 180; // 0 for right, 180 for left
+            fish.container.style.transform = `scaleX(${dx < 0 ? 1 : -1})`; // Flip horizontally
+
+            fish.x += Math.cos(angle) * fish.speed;
+            fish.y += Math.sin(angle) * fish.speed;
+
+            // Update the Lottie animation's position
+            fish.container.style.left = `${fish.x - fish.size / 2}px`;
+            fish.container.style.top = `${fish.y - fish.size / 2}px`;
+          } else {
+            // Fish reaches the food
+            foodDropped = false;
+          }
+        }
+      }
+
+      // Main game loop
+      function gameLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawFood();
+        moveFish();
+        requestAnimationFrame(gameLoop);
+      }
+
+      // Handle canvas click to drop food
+      canvas.addEventListener("click", (event) => {
+        const rect = canvas.getBoundingClientRect();
+        food.x = event.clientX - rect.left;
+        food.y = event.clientY - rect.top;
+        foodDropped = true;
+      });
+
+      // Initialize the game
+      loadFishAnimation();
+      gameLoop();
+    </script>
+  </body>
+</html>

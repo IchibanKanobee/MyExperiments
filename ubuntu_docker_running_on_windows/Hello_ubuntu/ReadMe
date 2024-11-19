@@ -1,0 +1,23 @@
+https://iofhttps://ioflood.com/blog/python-docker-image/#:~:text=To%20create%20a%20Python%20Docker%20image%2C%20you%20need%20to%20write,with%20the%20docker%20build%20command.&text=You%20can%20build%20the%20Docker,t%20my%2Dpython%2Dapp%20.
+
+You can build the Docker image with the following command:
+
+docker build -t my-python-app .
+Bash
+This command builds the Docker image and tags (-t) it as my-python-app. The . specifies that Docker should look for the Dockerfile in the current directory.
+
+By default, Docker uses the Overlay2 driver, which stores images in a directory called /var/lib/docker/overlay2 .
+
+Export the Image on Ubuntu:
+
+bash
+Copy code
+docker save -o your_image.tar your_image_name:tag
+
+Import the Image on Windows:
+
+bash
+Copy code on Windows
+docker load -i your_image.tar
+
+The image will show up in docker desktop and you can run it

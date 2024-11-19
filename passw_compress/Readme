@@ -1,0 +1,30 @@
+Neither the tar format nor the gz format has built-in support for password-protecting files.
+Use crypt or gpg on the
+Refer this encrypt-and-decrypt-files-with-a-password for more info.
+https://www.cyberciti.biz/tips/linux-how-to-encrypt-and-decrypt-files-with-a-password.html
+
+To encrypt a single file, use command gpg as follows:
+$ gpg -c filename
+
+To encrypt myfinancial.info.txt file, type the command:
+$ gpg -c myfinancial.info.txt
+
+To decrypt file use the gpg command as follow:
+$ gpg myfinancial.info.txt.gpg
+
+OR
+$ gpg -d myfinancial.info.txt.gpg
+
+OR
+$ gpg --decrypt myfinancial.info.txt.gpg
+
+
+ara@ara-DevBox:/media/ara/HDD/MyProjects/passw_compress$ gpg -c doc.txt
+ara@ara-DevBox:/media/ara/HDD/MyProjects/passw_compress$ gpg -d doc.txt.gpg 
+gpg: AES encrypted data
+gpg: encrypted with 1 passphrase
+Hello
+ara@ara-DevBox:/media/ara/HDD/MyProjects/passw_compress$ gpg -d doc.txt.gpg > doc.txt
+gpg: AES encrypted data
+gpg: encrypted with 1 passphrase
+ara@ara-DevBox:/media/ara/HDD/MyProjects/passw_compress$

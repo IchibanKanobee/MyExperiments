@@ -1,0 +1,9 @@
+Refresh list of companies in db - The problem with the data is that these lists are not changing in years. Tried to run the same script one year later, and all companies are already in database!
+
+Refresh list of companies in db from wiki
+
+Create neo4j for wiki companies data
+
+Text classification for business, rich, finance
+
+Web site for business rich finance
