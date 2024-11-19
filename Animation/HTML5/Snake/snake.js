@@ -35,7 +35,7 @@ let isTurning = false;
 let gameOver = false;
 
 // Timer variables
-const gameSpeed = 500; // 500 ms per animation cycle
+const gameSpeed = 150;
 let gameInterval;
 
 let isPaused = false; // Track pause state
